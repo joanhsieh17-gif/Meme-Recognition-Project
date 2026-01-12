@@ -48,7 +48,7 @@ To use this project, please provide your own data and ensure they are placed in 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/jxuan083/Meme_recognition_NEW.git
+git clone https://github.com/joanhsieh17-gif/Meme-Recognition-Project.git
 cd Meme_recognition_NEW
 ```
 
