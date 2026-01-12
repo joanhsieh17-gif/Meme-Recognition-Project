@@ -3,6 +3,15 @@
 ![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 
 This project is a tool for analyzing political memes. It combines **Face Recognition**, **OCR**, and **LLM** to identify politicians, extract overlay text, and generate a contextual interpretation of the meme's meaning using Google Gemini.
+## Data & Privacy Notice
+
+Due to privacy constraints, this repository does not include original training/testing datasets, pre-trained models, cache files, or specific results. 
+
+To use this project, please provide your own data and ensure they are placed in the following directories:
+* `dataset/` - Place your raw images or data here.
+* `encoding_caches/` - For stored feature vectors or temporary caches.
+* `models/` - For saving or loading your trained model files (e.g., .h5, .pkl).
+* `results/` - For output logs, accuracy reports, or prediction images.
 
 ## Key Features
 
