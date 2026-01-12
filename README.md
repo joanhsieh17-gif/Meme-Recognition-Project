@@ -292,7 +292,7 @@ Type: llm             | Filter None: True  | Acc: 159/166 = 0.9578
 ```
 <br>
 <p align="center">
-  <img src="images/Face%20Recognition%20Only%20v.s.%20New%20Design%20Pipeline(Face%20Rec%20+%20OCR%20+LLM).png" width="80%">
+  <img src="images_in_readme/Face%20Recognition%20Only%20v.s.%20New%20Design%20Pipeline(Face%20Rec%20+%20OCR%20+LLM).png" width="80%">
   <br>
   <em>Figure: Comparison between Face Recognition Only and New Design Pipeline</em>
 </p>
@@ -301,7 +301,7 @@ Type: llm             | Filter None: True  | Acc: 159/166 = 0.9578
 <br>
 
 <p align="center">
-  <img src="images/model%20optimization.png" width="80%">
+  <img src="images_in_readme/model%20optimization.png" width="80%">
   <br>
   <em>Figure: Model Optimization</em>
 </p>
