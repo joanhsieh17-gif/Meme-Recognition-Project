@@ -1,0 +1,8 @@
+venv/
+quick_test/
+dlib/
+main/results/
+main/reports/
+main/.DS_Store
+caches/
+.DS_Store

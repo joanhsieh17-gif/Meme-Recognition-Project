@@ -1,0 +1,14 @@
+face_recognition
+paddleocr
+paddlepaddle
+google-genai
+pypinyin
+json_repair
+pandas
+numpy
+tqdm
+Pillow
+scikit-learn
+jupyter
+opencv-python-headless
+
