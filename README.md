@@ -318,3 +318,9 @@ Type: llm             | Filter None: True  | Acc: 159/166 = 0.9578
 - **[face_recognition](https://github.com/ageitgey/face_recognition)**
 - **[PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)**
 - **[Google Gemini](https://ai.google.dev/)**
+
+## Project Maintenance Note
+
+* **Repository Update**: This repository has been refactored and migrated from a previous version to ensure a cleaner project structure and better privacy protection.
+* **Commit History**: The original commit history has been reset during the migration process to remove legacy large files and sensitive data.
+* **Refactored Version**: This is the current stable version of the project.
