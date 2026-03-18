@@ -157,48 +157,7 @@ $env:GEMINI_API_KEY="your_api_key_here"
 ```
 
 ## Usage
-
-### 1. Meme Analysis (Batch CLI)
-
-Use `main/main.py` to analyze all images in a directory. This will generate a JSONL result file and a visual HTML report.
-
-```bash
-cd main
-python main.py --test_dir ../datasets/test_dir_real/
-```
-
-**Arguments:**
-- `--test_dir`: Path to the directory containing images (Required).
-- `--model_path`: Path to the face recognition SVM model (Default: `../models/trained_svm_model_real25.pkl`).
-- `--api_key`: (Optional) Pass API key directly if not set in environment.
-
-Results will be saved in:
-- `main/results/`: JSONL raw data (includes `cand_details` and `ocr_details`).
-- `main/reports/`: HTML reports with Base64 embedded images (can be viewed anywhere).
-
-### 2. Accuracy Calculation
-
-After running the analysis, you can evaluate the accuracy of the predictions against the ground truth (parsed from filenames like `001_name.jpg`).
-
-```bash
-cd main
-# Process the latest result file:
-python accuracy.py
-
-# Or specify a particular result file:
-python accuracy.py --results_path results/2023-10-27_10-00-00.jsonl
-```
-
-### 3. Jupyter Notebook
-
-For interactive analysis and experimentation:
-
-```bash
-jupyter notebook
-# Open main/testing_notebook.ipynb
-```
-
-### 4. Training Face Recognition Model
+### 1. Training Face Recognition Model
 
 To retrain the face recognition model with new data:
 
@@ -237,6 +196,47 @@ datasets/
     # 1.0_train.py
     DEFAULT_TRAIN_DIR = "../datasets/my_custom_dataset"
     DEFAULT_MODEL_PATH = "../models/my_new_model.pkl"
+    ```
+
+### 2. Meme Analysis (Batch CLI)
+
+Use `main/main.py` to analyze all images in a directory. This will generate a JSONL result file and a visual HTML report.
+
+```bash
+cd main
+python main.py --test_dir ../datasets/test_dir_real/
+```
+
+**Arguments:**
+- `--test_dir`: Path to the directory containing images (Required).
+- `--model_path`: Path to the face recognition SVM model (Default: `../models/trained_svm_model_real25.pkl`).
+- `--api_key`: (Optional) Pass API key directly if not set in environment.
+
+Results will be saved in:
+- `main/results/`: JSONL raw data (includes `cand_details` and `ocr_details`).
+- `main/reports/`: HTML reports with Base64 embedded images (can be viewed anywhere).
+
+### 3. Accuracy Calculation
+
+After running the analysis, you can evaluate the accuracy of the predictions against the ground truth (parsed from filenames like `001_name.jpg`).
+
+```bash
+cd main
+# Process the latest result file:
+python accuracy.py
+
+# Or specify a particular result file:
+python accuracy.py --results_path results/2023-10-27_10-00-00.jsonl
+```
+
+### 4. Jupyter Notebook
+
+For interactive analysis and experimentation:
+
+```bash
+jupyter notebook
+# Open main/testing_notebook.ipynb
+```
 
 ## Project Structure
 
