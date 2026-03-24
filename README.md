@@ -54,9 +54,48 @@ cd Meme-Recognition-Project
 
 ### 2. Set Up Virtual Environment
 
+### Mac
+# 1. 安裝命令行工具
+xcode-select --install
+
+# 2. 安裝系統庫（dlib 需要編譯依賴）
+brew install cmake boost pkg-config libpng jpeg openblas
+
+# 3. 建虛擬環境
+python3.10 -m venv .venv
+source .venv/bin/activate
+
+# 4. pip 工具
+python3 -m pip install --upgrade pip setuptools wheel
+
+# 5. 安裝 Python 依賴
+pip install -r requirements.txt
+
+# 若 dlib 仍 fail，單獨再試
+pip install dlib
+
+###Windows
+# 1. 安裝 Python 3.10（官方安裝程式）
+# 2. 加入 PATH: python, pip
+
+# 3. 建虛擬環境
+python -m venv .venv
+.venv\Scripts\Activate.ps1   # 或 .venv\Scripts\activate.bat
+
+# 4. 更新 pip
+python -m pip install --upgrade pip setuptools wheel
+
+# 5. 試直接安裝
+python -m pip install -r requirements.txt
+
+# 6. 如果 dlib install 失敗（找不到 wheel，需編譯）
+# 先安裝 build tools (Visual Studio Build Tools)
+# 或使用已編好的 wheel（如果可用）
+python -m pip install dlib
+
 #### `macOS / Linux`
 ```bash
-python -m venv venv
+python3.10 -m venv venv
 source venv/bin/activate
 ```
 
@@ -73,12 +112,29 @@ venv\Scripts\activate
 ### 3. Install Dependencies
 
 #### `macOS / Linux`
-First, install `dlib` by following the instructions in [How to install dlib from source on macOS or Ubuntu](https://gist.github.com/ageitgey/629d75c1baac34dfa5ca2a1928a7aeaf). You don't need to build the main dlib library.  
-  
-Then, install the remaining requirements:
+
+檢查是否安裝：
+```bash
+xcode-select -p
+```
+
+若無輸出路徑，則安裝：
+```bash
+xcode-select --install
+```
+
+檢查是否安裝：
+```bash
+brew --version
+```
+
+若無輸出路徑，則安裝：
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 ```bash
-brew install cmake
+brew install cmake boost
 pip install -r requirements.txt
 ```
 
