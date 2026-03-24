@@ -49,7 +49,7 @@ To use this project, please provide your own data and ensure they are placed in 
 
 ```bash
 git clone https://github.com/joanhsieh17-gif/Meme-Recognition-Project.git
-cd Meme_recognition_NEW
+cd Meme-Recognition-Project
 ```
 
 ### 2. Set Up Virtual Environment
