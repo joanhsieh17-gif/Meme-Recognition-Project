@@ -1,14 +1,17 @@
+setuptools<70.0.0
+face_recognition_models
 face_recognition
+
 paddleocr
 paddlepaddle
 google-genai
 pypinyin
 json_repair
 pandas
-numpy
+numpy<2.0.0
 tqdm
 Pillow
 scikit-learn
 jupyter
-opencv-python-headless
-
+opencv-python-headless==4.10.0.84
+# dlib (If Windows, please manually install the .whl file, see README for details. If Mac, please uncomment and then follow README.)
