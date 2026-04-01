@@ -152,7 +152,7 @@ datasets/
         └── 02_person2.jpg
   ```
 
-### 2. Train the model
+### 2. Training Face Recognition Model
 1. Remember to set the model and training data if you have different kinds of training data.
    `face_recognition/1.0_train.py`
 ```python
@@ -197,7 +197,7 @@ This will generate a JSONL result file and a visual HTML report.
 - `main/results/`: JSONL raw data (includes `cand_details` and `ocr_details`).
 - `main/reports/`: HTML reports with Base64 embedded images (can be viewed anywhere).
 
-### 3. Accuracy Calculation
+### 4. Accuracy Calculation
 
 1. Set the path to save confusion matrices
 ```python
@@ -217,7 +217,7 @@ python accuracy.py
 python accuracy.py --results_path results/2023-10-27_10-00-00.jsonl
 ```
 
-### 4. Jupyter Notebook
+### 5. Jupyter Notebook
 
 For interactive analysis and experimentation:
 
