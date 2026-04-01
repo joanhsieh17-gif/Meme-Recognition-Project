@@ -14,4 +14,3 @@ Pillow
 scikit-learn
 jupyter
 opencv-python-headless==4.10.0.84
-# dlib (If Windows, please manually install the .whl file, see README for details. If Mac, please uncomment and then follow README.)
