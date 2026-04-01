@@ -182,22 +182,22 @@ def main():
 
 2.  Run the main script:
 
-Set the test data path.
+  Set the test data path.
 
-Change here -> ../datasets/test_dir_real/
+  Change here -> ../datasets/test_dir_real/
 ```bash
 cd main
 python main.py --test_dir ../datasets/test_dir_real/
 ```
-This will generate a JSONL result file and a visual HTML report.
+  This will generate a JSONL result file and a visual HTML report.
 
-Results will be saved in:
+  Results will be saved in:
 - `main/results/`: JSONL raw data (includes `cand_details` and `ocr_details`).
 - `main/reports/`: HTML reports with Base64 embedded images (can be viewed anywhere).
 
 ### 3. Accuracy Calculation
 
-Set the path to save confusion matrices
+1. Set the path to save confusion matrices
 ```python
 # --- update：build specific folder to restore confusion matrixs ---
     output_dir = "confusion_matrices/combine"  # set the path to save confusion matrices
