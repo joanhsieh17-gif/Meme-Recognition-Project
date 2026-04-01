@@ -40,6 +40,10 @@ To use this project, please provide your own data and ensure they are placed in 
 ```text
 Meme_recognition_NEW/
 ├── datasets/                     # Training data and Test images
+     ├── train_dir_real
+     ├── train_dir_non_real
+     ├── test_dir_real
+     ├── test_dir_non_real 
 ├── face_recognition/             # Face recognition scripts
 │   ├── 1.0_train.py              # Script to train SVM models
 │   ├── 2.0_predict.py            # Standalone prediction test script
@@ -109,60 +113,77 @@ $env:GEMINI_API_KEY="your_api_key_here"
 ```
 
 ## Usage
-### 1. Training Face Recognition Model
 
-To retrain the face recognition model with new data:
+### 1. Put data in training and test dir
+Ｗe can train different kinds of models like the model for recognize real images or cartoon images.
 
-1.  Place training images in `datasets/train_dir_real/` (organized by person folders).
+1.  Place training images in `datasets/train_dir_real/` (rename your folder)
+    Please replace your images by the following structure, using subfolder to categorize different persons.
+    Make sure to use `pypinyin` format to translate original names, if people's names you want to analyze are not in English. 
 ```text
 datasets/
 └── train_dir_real/
-    ├── person1/          
-    │   ├── 01_person1.jpg
-    │   ├── 02_person1.jpg
-    │   └── 01_person1.jpg
+    ├── wang_xiao_ming/    # Must use pypinyin format      
+    │   ├── 01_wang_xiao_ming.jpg # There is no specific format required for images.
+    │   ├── 02_wang_xiao_ming.jpg
+    │   └── 03_wang_xiao_ming.jpg
     └── person2/
         ├── 01_person2.jpg
         └── 02_person2.jpg
   ```
 
-2.  Run the training script:
-    ```bash
-    cd face_recognition
-    python 1.0_train.py
-    ```
-    This will generate cached encodings in `encoding_caches/` and save the new model to `../models/`.
+2. Place test images in `datasets/test_dir_real/` (rename your folder)
+   Make sure to use `pypinyin` format to translate original names, if people's names you want to analyze are not in English.
+   There is no subfolder in test dirs.
+```text
+datasets/
+└── test_dir_real/    
+    │   ├── 01_wang_xiao_ming.jpg # Must use pypinyin format
+    │   ├── 02_wang_xiao_ming.jpg
+    │   └── 03_wang_xiao_ming.jpg
+    └── person2/
+        ├── 01_person2.jpg
+        └── 02_person2.jpg
+  ```
 
-    Customizing Training Parameters:
-    If you want to use different datasets or change where the model is saved, you can modify the following constants directly in `face_recognition/1.0_train.py`:
-    
-    | Parameter | Default Value | Description |
-    | :--- | :--- | :--- |
-    | `DEFAULT_TRAIN_DIR` | `../datasets/train_dir_real` | Path to your unzipped training images. |
-    | `DEFAULT_MODEL_PATH` | `../models/trained_svm_model_real25.pkl` | Where the final trained model will be saved. |
-    | `DEFAULT_CACHE_PATH` | `encoding_caches/train_encodings_cache_real.pkl` | Path for saving face encodings (speeds up retraining). |
-    | `DEFAULT_MAX_IMAGES_PER_PERSON` | `25` | Limits the number of images processed per person folder. |
-    
-    **Example of changing the path in code:**
-    ```python
-    # 1.0_train.py
-    DEFAULT_TRAIN_DIR = "../datasets/my_custom_dataset"
-    DEFAULT_MODEL_PATH = "../models/my_new_model.pkl"
-    ```
+2. Remember to set the model and training data if you have different kinds of training data.
+   `face_recognition/1.0_train.py`
+```python
+DEFAULT_CACHE_PATH = "encoding_caches/train_encodings_cache_real.pkl" # Path for saving face encodings (speeds up retraining).
+DEFAULT_MODEL_PATH = "../models/trained_svm_model_real25.pkl"         # Where the final trained model will be saved.
+DEFAULT_TRAIN_DIR = "../datasets/train_dir_real"                      # Choose the training data to train your model
+DEFAULT_MAX_IMAGES_PER_PERSON = 25                                    # Limits the number of images processed per person folder. 
+```
+
+3.  Run the training script:
+```bash
+cd face_recognition
+python 1.0_train.py
+```
+This will generate cached encodings in `encoding_caches/` and save the new model to `../models/`.
 
 ### 2. Meme Analysis (Batch CLI)
 
-Use `main/main.py` to analyze all images in a directory. This will generate a JSONL result file and a visual HTML report.
+1. Set the model you have trained to analyze test data.
+```python
+def main():
+    parser = argparse.ArgumentParser(description="Batch Meme Analysis Tool")
+    parser.add_argument("--test_dir", type=str, required=True, help="Directory containing images to analyze")
+    # change here -> 'default="../models/trained_svm_model_real25.pkl"' 
+    parser.add_argument("--model_path", type=str, default="../models/trained_svm_model_real25.pkl", help="Path to SVM model")
+    parser.add_argument("--api_key", type=str, help="Google Gemini API Key (Optional if env var set)")
+```
 
+
+2.  Run the main script:
+
+Set the test data path.
+Change here -> ../datasets/test_dir_real/
 ```bash
 cd main
 python main.py --test_dir ../datasets/test_dir_real/
 ```
-
-**Arguments:**
-- `--test_dir`: Path to the directory containing images (Required).
-- `--model_path`: Path to the face recognition SVM model (Default: `../models/trained_svm_model_real25.pkl`).
-- `--api_key`: (Optional) Pass API key directly if not set in environment.
+This will generate a JSONL result file and a visual HTML report.
 
 Results will be saved in:
 - `main/results/`: JSONL raw data (includes `cand_details` and `ocr_details`).
@@ -170,7 +191,14 @@ Results will be saved in:
 
 ### 3. Accuracy Calculation
 
-After running the analysis, you can evaluate the accuracy of the predictions against the ground truth (parsed from filenames like `001_name.jpg`).
+Set the path to save confusion matrices
+```python
+# --- 新增：建立專屬資料夾 ---
+    output_dir = "confusion_matrices/combine"  # set the path to save confusion matrices
+    os.makedirs(output_dir, exist_ok=True)
+```
+
+2.After running the analysis, you can evaluate the accuracy of the predictions against the ground truth (parsed from filenames like `001_name.jpg`).
 
 ```bash
 cd main
