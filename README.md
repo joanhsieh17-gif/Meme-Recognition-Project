@@ -23,17 +23,19 @@ To use this project, please provide your own data and ensure they are placed in 
 
 ## Table of Contents
 
+- [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [1. Meme Analysis (Batch CLI)](#1-meme-analysis-batch-cli)
-  - [2. Accuracy Calculation](#2-accuracy-calculation)
-  - [3. Jupyter Notebook](#3-jupyter-notebook)
-  - [4. Training Face Recognition Model](#4-training-face-recognition-model)
-- [Project Structure](#project-structure)
+  - [1. Put data in training and test dir](#1-put-data-in-training-and-test-dir)
+  - [2. Training Face Recognition Model](#2-training-face-recognition-model)
+  - [3. Meme Analysis (Batch CLI)](#3-meme-analysis-(batch-cli))
+  - [4. Accuracy Calculation](#2-accuracy-calculation)
+  - [5. Jupyter Notebook](#3-jupyter-notebook)
 - [Project Performance](#project-performance)
 - [Troubleshooting](#troubleshooting)
 - [Acknowledgments](#acknowledgments)
+- [Project Maintenance Note](#project-maintenance-note)
 
 ## Project Structure
 
