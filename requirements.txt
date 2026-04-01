@@ -14,3 +14,5 @@ Pillow
 scikit-learn
 jupyter
 opencv-python-headless==4.10.0.84
+matplotlib
+scikit-learn
