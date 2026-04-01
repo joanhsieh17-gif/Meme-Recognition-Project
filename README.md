@@ -182,14 +182,14 @@ def main():
 
 2.  Run the main script:
 
-  Set the test data path.
+1. Set the test data path.
 
-  Change here -> ../datasets/test_dir_real/
+Change here -> ../datasets/test_dir_real/
 ```bash
 cd main
 python main.py --test_dir ../datasets/test_dir_real/
 ```
-  This will generate a JSONL result file and a visual HTML report.
+This will generate a JSONL result file and a visual HTML report.
 
   Results will be saved in:
 - `main/results/`: JSONL raw data (includes `cand_details` and `ocr_details`).
@@ -204,7 +204,7 @@ python main.py --test_dir ../datasets/test_dir_real/
     os.makedirs(output_dir, exist_ok=True)
 ```
 
-2.After running the analysis, you can evaluate the accuracy of the predictions against the ground truth (parsed from filenames like `001_name.jpg`).
+2. After running the analysis, you can evaluate the accuracy of the predictions against the ground truth (parsed from filenames like `001_name.jpg`).
 
 ```bash
 cd main
