@@ -154,6 +154,7 @@ datasets/
 
 ### 2. Training Face Recognition Model
 1. Remember to set the model and training data if you have different kinds of training data.
+
    `face_recognition/1.0_train.py`
 ```python
 DEFAULT_CACHE_PATH = "encoding_caches/train_encodings_cache_real.pkl" # Path for saving face encodings (speeds up retraining).
@@ -172,6 +173,7 @@ This will generate cached encodings in `encoding_caches/` and save the new model
 ### 3. Meme Analysis (Batch CLI)
 
 1. Set the model you have trained to analyze test data.
+
    `main/main.py`
 ```python
 def main():
@@ -201,6 +203,7 @@ This will generate a JSONL result file and a visual HTML report.
 ### 4. Accuracy Calculation
 
 1. Set the path to save confusion matrices
+
 `main/accuracy.py`
 ```python
 # --- update：build specific folder to restore confusion matrixs ---
