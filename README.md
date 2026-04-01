@@ -118,7 +118,9 @@ $env:GEMINI_API_KEY="your_api_key_here"
 Ｗe can train different kinds of models like the model for recognize real images or cartoon images.
 
 1.  Place training images in `datasets/train_dir_real/` (rename your folder)
+
     Please replace your images by the following structure, using subfolder to categorize different persons.
+    
     Make sure to use `pypinyin` format to translate original names, if people's names you want to analyze are not in English. 
 ```text
 datasets/
@@ -133,7 +135,9 @@ datasets/
   ```
 
 2. Place test images in `datasets/test_dir_real/` (rename your folder)
+   
    Make sure to use `pypinyin` format to translate original names, if people's names you want to analyze are not in English.
+   
    There is no subfolder in test dirs.
 ```text
 datasets/
@@ -146,7 +150,8 @@ datasets/
         └── 02_person2.jpg
   ```
 
-2. Remember to set the model and training data if you have different kinds of training data.
+### 2. Train the model
+1. Remember to set the model and training data if you have different kinds of training data.
    `face_recognition/1.0_train.py`
 ```python
 DEFAULT_CACHE_PATH = "encoding_caches/train_encodings_cache_real.pkl" # Path for saving face encodings (speeds up retraining).
@@ -155,14 +160,14 @@ DEFAULT_TRAIN_DIR = "../datasets/train_dir_real"                      # Choose t
 DEFAULT_MAX_IMAGES_PER_PERSON = 25                                    # Limits the number of images processed per person folder. 
 ```
 
-3.  Run the training script:
+2.  Run the training script:
 ```bash
 cd face_recognition
 python 1.0_train.py
 ```
 This will generate cached encodings in `encoding_caches/` and save the new model to `../models/`.
 
-### 2. Meme Analysis (Batch CLI)
+### 3. Meme Analysis (Batch CLI)
 
 1. Set the model you have trained to analyze test data.
 ```python
@@ -178,6 +183,7 @@ def main():
 2.  Run the main script:
 
 Set the test data path.
+
 Change here -> ../datasets/test_dir_real/
 ```bash
 cd main
@@ -193,7 +199,7 @@ Results will be saved in:
 
 Set the path to save confusion matrices
 ```python
-# --- 新增：建立專屬資料夾 ---
+# --- update：build specific folder to restore confusion matrixs ---
     output_dir = "confusion_matrices/combine"  # set the path to save confusion matrices
     os.makedirs(output_dir, exist_ok=True)
 ```
