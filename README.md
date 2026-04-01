@@ -182,7 +182,7 @@ def main():
 
 2.  Run the main script:
 
-1. Set the test data path.
+Set the test data path.
 
 Change here -> ../datasets/test_dir_real/
 ```bash
