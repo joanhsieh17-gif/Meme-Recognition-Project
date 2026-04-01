@@ -1,6 +1,6 @@
 # Meme Recognition System
 
-![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+![Python Version](https://img.shields.io/badge/python-3.10-blue)
 
 This project is a tool for analyzing political memes. It combines **Face Recognition**, **OCR**, and **LLM** to identify politicians, extract overlay text, and generate a contextual interpretation of the meme's meaning using Google Gemini.
 ## Data & Privacy Notice
@@ -35,40 +35,83 @@ To use this project, please provide your own data and ensure they are placed in 
 - [Troubleshooting](#troubleshooting)
 - [Acknowledgments](#acknowledgments)
 
+## Project Structure
+
+```text
+Meme_recognition_NEW/
+├── datasets/                     # Training data and Test images
+├── face_recognition/             # Face recognition scripts
+│   ├── 1.0_train.py              # Script to train SVM models
+│   ├── 2.0_predict.py            # Standalone prediction test script
+│   └── encoding_caches/          # Face encoding caches
+├── models/                       # Saved .pkl models
+├── main/                         # Core analysis logic
+│   ├── main.py                   # CLI entry point for batch analysis
+│   ├── MemeAnalyzer.py           # Core analysis engine
+│   ├── accuracy.py               # Accuracy calculation script
+│   ├── testing_notebook.ipynb    # Interactive notebook
+│   ├── results/                  # Batch analysis JSONL output
+│   ├── reports/                  # Self-contained HTML reports
+│   └── caches/                   # OCR and analysis caches
+├── requirements.txt              # Python dependencies
+└── README.md
+```
+
 ## Prerequisites
 
 * **Operating System**: macOS, Linux, or Windows.
-* **Python**: Version **3.10, 3.11, or 3.12**.
-    * *Note*: Python 3.13 is **not yet supported** due to dependency compatibility.
-
+* **Python**: Version **3.10**.
 * **API Key**: A valid [Google Gemini API Key](https://aistudio.google.com/).
 
 ## Installation
 
-### 1. Clone the Repository
-
+### `macOS / Linux`
 ```bash
+# 1.Install system compilation tools
+brew install cmake
+
+# 2. Clone the Repository
 git clone https://github.com/joanhsieh17-gif/Meme-Recognition-Project.git
 cd Meme-Recognition-Project
-```
 
-### 2. Set Up Virtual Environment
-
-#### `macOS / Linux`
-```bash
-python -m venv venv
+# 3. Set Up Virtual Environment
+python3.10 -m venv venv
 source venv/bin/activate
+
+# 4. Install Dependencies
+pip install dlib
+pip install -r requirements.txt
+
+# 5.Configure API Key
+export GEMINI_API_KEY="your_api_key_here"
 ```
 
 #### `Windows`
-We recommend using a specific Python version (e.g., 3.12) to create the environment.
 ```bash
-# If you have the 'py' launcher installed (recommended):
-py -3.12 -m venv venv
+# 1. Clone the Repository
+git clone https://github.com/joanhsieh17-gif/Meme-Recognition-Project.git
+cd Meme-Recognition-Project
 
-# Activate the environment:
+# 2. Set Up Virtual Environment
+py -3.10 -m venv venv
 venv\Scripts\activate
+
+# 3. Install Dependencies
+pip install ./wheels/dlib-19.22.99-cp310-cp310-win_amd64.whl
+pip install -r requirements.txt
+
+# 4.Configure API Key
+## cmd
+set GEMINI_API_KEY="your_api_key_here"
+
+## powershell
+$env:GEMINI_API_KEY="your_api_key_here"
 ```
+
+
+
+
+
 
 ### 3. Install Dependencies
 
@@ -90,7 +133,7 @@ Critical for Windows: Installing dlib from source can be difficult. We highly re
     1. Check your Python version:
     ```bash
     python --version
-    # Output example: Python 3.12.x
+    # Output example: Python 3.10.x
     ```
     
     2. Download the matching .whl file:
@@ -238,27 +281,7 @@ jupyter notebook
 # Open main/testing_notebook.ipynb
 ```
 
-## Project Structure
 
-```text
-Meme_recognition_NEW/
-├── datasets/                     # Training data and Test images
-├── face_recognition/             # Face recognition scripts
-│   ├── 1.0_train.py              # Script to train SVM models
-│   ├── 2.0_predict.py            # Standalone prediction test script
-│   └── encoding_caches/          # Face encoding caches
-├── models/                       # Saved .pkl models
-├── main/                         # Core analysis logic
-│   ├── main.py                   # CLI entry point for batch analysis
-│   ├── MemeAnalyzer.py           # Core analysis engine
-│   ├── accuracy.py               # Accuracy calculation script
-│   ├── testing_notebook.ipynb    # Interactive notebook
-│   ├── results/                  # Batch analysis JSONL output
-│   ├── reports/                  # Self-contained HTML reports
-│   └── caches/                   # OCR and analysis caches
-├── requirements.txt              # Python dependencies
-└── README.md
-```
 
 ## Project Performance
 
