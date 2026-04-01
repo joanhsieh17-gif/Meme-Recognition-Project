@@ -110,10 +110,20 @@ def generate_html_report(results, report_path):
 def main():
     parser = argparse.ArgumentParser(description="Batch Meme Analysis Tool")
     parser.add_argument("--test_dir", type=str, required=True, help="Directory containing images to analyze")
+    # 需修改模型路徑，不同類型的資料需用不同模型測試
     parser.add_argument("--model_path", type=str, default="../models/trained_svm_model_real25.pkl", help="Path to SVM model")
     parser.add_argument("--api_key", type=str, help="Google Gemini API Key (Optional if env var set)")
     
     args = parser.parse_args()
+
+    # 輸出執行配置摘要
+    print("\n" + "="*40)
+    print(f"{'Meme Analysis Configuration':^40}")
+    print("="*40)
+    print(f" Target Directory: {args.test_dir}")
+    print(f" Face SVM Model:   {args.model_path}")
+    print(f" LLM Model:        gemini-2.0-flash")
+    print("="*40 + "\n")
     
     # 1. Initialize Analyzer
     try:
