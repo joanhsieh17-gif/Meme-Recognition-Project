@@ -201,6 +201,7 @@ This will generate a JSONL result file and a visual HTML report.
 ### 4. Accuracy Calculation
 
 1. Set the path to save confusion matrices
+`main/accuracy.py`
 ```python
 # --- update：build specific folder to restore confusion matrixs ---
     output_dir = "confusion_matrices/combine"  # set the path to save confusion matrices
