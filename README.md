@@ -172,6 +172,7 @@ This will generate cached encodings in `encoding_caches/` and save the new model
 ### 3. Meme Analysis (Batch CLI)
 
 1. Set the model you have trained to analyze test data.
+   `main/main.py`
 ```python
 def main():
     parser = argparse.ArgumentParser(description="Batch Meme Analysis Tool")
