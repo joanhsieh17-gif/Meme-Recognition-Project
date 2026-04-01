@@ -42,7 +42,7 @@ To use this project, please provide your own data and ensure they are placed in 
 ```text
 Meme_recognition_NEW/
 ├── datasets/                     # Training data and Test images
-     ├── train_dir_real
+     ├── train_dir_real           # build the folders by yourself
      ├── train_dir_non_real
      ├── test_dir_real
      ├── test_dir_non_real 
